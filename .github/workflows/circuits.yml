@@ -1,12 +1,12 @@
 name: circuit tests
 
-on: workflow_dispatch
-#   push:
-#     paths:
-#     - 'Cargo.toml'
-#     - 'circuits/**'
-#     - .github/workflows/circuits.yml
-#     - .rustfmt.toml
+on:
+  push:
+    paths:
+    - 'Cargo.toml'
+    - 'circuits/**'
+    - .github/workflows/circuits.yml
+    - .rustfmt.toml
 
 concurrency:
     cancel-in-progress: true
