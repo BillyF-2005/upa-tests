@@ -45,7 +45,7 @@ jobs:
   # Build, check and test the circuit test code
   circuit-tests:
   #   needs: start-runner # required to start the main job when the runner is ready
-    runs-on: ${{ needs.start-runner.outputs.label }}
+  #   runs-on: ${{ needs.start-runner.outputs.label }}
 
     defaults:
       run:
