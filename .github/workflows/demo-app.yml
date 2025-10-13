@@ -86,8 +86,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - name: Install rust compiler for circom
-        uses: actions-rs/toolchain@v1
+      - name: Set up Rust (for circom)
+        uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: stable
 
       - name: Cargo cache
         uses: Swatinem/rust-cache@v2
