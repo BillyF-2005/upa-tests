@@ -112,7 +112,7 @@ jobs:
               echo "Directory 'circom' already exists."
             fi
             pushd circom
-            cargo build --release
+            echo -e '[toolchain]\nchannel = "nightly-2024-11-17"\nprofile = "minimal"' > rust-toolchain.toml
             cargo install --path circom
             popd
           else
