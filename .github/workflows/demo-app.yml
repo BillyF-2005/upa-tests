@@ -86,13 +86,19 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - name: Set up Rust (for circom)
-        uses: dtolnay/rust-toolchain@master
-        with:
-          toolchain: stable
+      - name: Install rust
+        uses: actions-rs/toolchain@v1
 
       - name: Cargo cache
         uses: Swatinem/rust-cache@v2
+
+      - name: Cache circom
+        uses: actions/cache@v4
+        with:
+          path: |
+            circom
+            ~/.cargo/bin/circom
+          key: ${{ runner.os }}-circom-${{ hashFiles('circom/Cargo.lock') }}
 
       - name: Install circom if necessary
         id: install_circom
