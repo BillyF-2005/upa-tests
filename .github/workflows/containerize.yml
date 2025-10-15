@@ -2,10 +2,10 @@
 # https://docs.github.com/en/actions/publishing-packages/publishing-docker-images#publishing-images-to-github-packages
 # https://docs.docker.com/build/ci/github-actions/manage-tags-labels/
 
-on: workflow_dispatch
-#   push:
-#     tags:
-#       - 'v[0-9]+.[0-9]+.[0-9]+**'
+on: 
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+**'
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: "${{ github.repository }}/demo-app"
