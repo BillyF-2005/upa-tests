@@ -1,6 +1,7 @@
 # Based on:
 # https://docs.github.com/en/actions/publishing-packages/publishing-docker-images#publishing-images-to-github-packages
 # https://docs.docker.com/build/ci/github-actions/manage-tags-labels/
+name: containerize
 
 on: 
   push:
