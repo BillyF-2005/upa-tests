@@ -6,8 +6,8 @@ import {
   TestUpgradedUpaVerifier__factory,
   UpaVerifier__factory,
 } from "../typechain-types";
-// import { testUpaInstanceFromDescriptor } from "../src/sdk/upa";
-// import { assert } from "console";
+import { testUpaInstanceFromDescriptor } from "../src/sdk/upa";
+import { assert } from "console";
 import { deployAndUpgradeUpa } from "./deploy";
 import { versionUintToString } from "../src/sdk/utils";
 import * as pkg from "../package.json";
@@ -34,30 +34,30 @@ describe("UPA Upgrade", async () => {
     expect(threw).eql(1);
   });
 
-  // it("New function and storage after upgrade", async function () {
-  //   const { upaDesc, owner } = await loadFixture(deployAndUpgradeUpa);
+  it("New function and storage after upgrade", async function () {
+    const { upaDesc, owner } = await loadFixture(deployAndUpgradeUpa);
 
-  //   // Upgrade the contract
-  //   const testUpaVerifierFactory =
-  //     new TestUpgradedUpaVerifier__factory(owner);
-  //   await upgradeVerifierContract(
-  //     upaDesc,
-  //     testUpaVerifierFactory,
-  //     3 /*maxRetries*/,
-  //     false /*prepare*/
-  //   );
-  //   const { verifier } = testUpaInstanceFromDescriptor(upaDesc, owner);
+    // Upgrade the contract
+    const testUpaVerifierFactory =
+      new TestUpgradedUpaVerifier__factory(owner);
+    await upgradeVerifierContract(
+      upaDesc,
+      testUpaVerifierFactory,
+      3 /*maxRetries*/,
+      false /*prepare*/
+    );
+    const { verifier } = testUpaInstanceFromDescriptor(upaDesc, owner);
 
-  //   // Query the new storage variable
-  //   assert((await verifier.testVar()) == false);
+    // Query the new storage variable
+    assert((await verifier.testVar()) == false);
 
-  //   // Set the new storage variable
-  //   verifier.setTestVar(true);
-  //   assert((await verifier.testVar()) == true);
+    // Set the new storage variable
+    verifier.setTestVar(true);
+    assert((await verifier.testVar()) == true);
 
-  //   // Check new function returns the right constant.
-  //   assert((await verifier.testNumber()) == 123456n);
-  // });
+    // Check new function returns the right constant.
+    assert((await verifier.testNumber()) == 123456n);
+  });
 
   it("deploy/upgrade versioning", async () => {
     const { upa, upaDesc, owner } = await loadFixture(deployAndUpgradeUpa);
