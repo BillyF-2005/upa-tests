@@ -1,6 +1,6 @@
 name: prover tests
 
-on: 
+on:
   push:
     paths:
     - '**/Cargo.toml'
