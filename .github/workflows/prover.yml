@@ -38,6 +38,7 @@ jobs:
       - name: Set up Rust
         uses: dtolnay/rust-toolchain@master
         with:
+          toolchain: nightly-2022-12-09
           components: rustfmt, clippy
 
       # Based on https://github.com/actions/cache/blob/main/examples.md#node---yarn-2
