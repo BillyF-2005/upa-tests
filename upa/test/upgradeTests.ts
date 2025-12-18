@@ -38,7 +38,8 @@ describe("UPA Upgrade", async () => {
     const { upaDesc, owner } = await loadFixture(deployAndUpgradeUpa);
 
     // Upgrade the contract
-    const testUpaVerifierFactory = new TestUpgradedUpaVerifier__factory(owner);
+    const testUpaVerifierFactory =
+      new TestUpgradedUpaVerifier__factory(owner);
     await upgradeVerifierContract(
       upaDesc,
       testUpaVerifierFactory,
